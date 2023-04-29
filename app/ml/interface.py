@@ -1,8 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Any, Dict, Optional
 
-
-class MicroserviceInterface(ABC):
+class Microservice(ABC):
     @abstractmethod
     def handle_request(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -15,6 +14,7 @@ class MicroserviceInterface(ABC):
             A dictionary of output data from the microservice.
         """
         pass
+
 
     def validate_input(self, data: Dict[str, Any]) -> Optional[str]:
         """
