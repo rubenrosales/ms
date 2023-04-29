@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-api
+  template:
+    metadata:
+      labels:
+        app: python-api
+    spec:
+      containers:
+        - name: python-api
+          image: python-api:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: KUBECONFIG
+              value: /root/.kube/config
+          volumeMounts:
+            - name: kubeconfig
+              mountPath: /root/.kube/config
+              readOnly: true
+      volumes:
+        - name: kubeconfig
+          configMap:
+            name: kubeconfig
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-api
+spec:
+  selector:
+    app: python-api
+  ports:
+    - name: http
+      port: 80
+      targetPort: 5000
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: python-api-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: yourdomain.com
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: python-api
+                port:
+                  name: http
+
+
