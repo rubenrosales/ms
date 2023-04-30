@@ -1,0 +1,6 @@
+apiVersion: skaffold/v4beta4
+kind: Config
+requires:
+- path: ./api
+- path: ./gui
+- path: ./ml
