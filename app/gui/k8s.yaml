@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: react-app
-          image: my-registry/react-app:latest
+          image: react-app:latest
           ports:
             - containerPort: 80
           env:

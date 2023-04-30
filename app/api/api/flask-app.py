@@ -27,6 +27,30 @@ def validate_data(data):
 
 
 def create_container(data):
+    """
+    Create a container or resource using either Docker or Kubernetes.
+
+    Args:
+        data (dict): A dictionary with the following keys:
+            - image (str): The name of the container image to use.
+            - container_name (Optional[str]): The name to give to the container;
+                defaults to image name + "-container".
+            - command (Optional[str]): The command to run inside the container;
+                defaults to a shell.
+            - environment (Optional[dict]): A dictionary of environment variables to
+                set inside the container.
+
+    Returns:
+        Tuple[Union[None, DockerContainer, KubernetesResource], str, int]: A tuple
+        with the following elements:
+            - The container or resource object if creation succeeded; None otherwise.
+            - A message string indicating the success or failure of the creation.
+            - A status code integer: 200 for success, 500 for failure.
+
+    Raises:
+        Any: If the creation fails for any reason.
+    """
+    
     # Extract container creation parameters
     image = data['image']
     container_name = data.get('container_name', f'{image}-container')

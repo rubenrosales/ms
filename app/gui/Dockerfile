@@ -1,12 +1,12 @@
 # Base image
-FROM node:14-alpine
+FROM node:16
 
 # Set working directory
 WORKDIR /app
 
 # Install app dependencies
 COPY package*.json ./
-RUN npm install
+RUN npm install material-ui 
 
 # Copy app source code
 COPY . .

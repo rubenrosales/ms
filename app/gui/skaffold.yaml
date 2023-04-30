@@ -1,16 +1,16 @@
 apiVersion: skaffold/v4beta4
 kind: Config
 metadata:
-  name: flask-api
+  name: react-gui
 build:
   artifacts:
-  - image: py-api
+  - image: react-gui-image
     context: .
     docker:
       dockerfile: Dockerfile
     sync:
       manual:
-        - dest: './api/*.py'
+        - dest: '*.js'
           src: '.'
   local:
     push: false

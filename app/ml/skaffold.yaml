@@ -1,16 +1,16 @@
 apiVersion: skaffold/v4beta4
 kind: Config
 metadata:
-  name: flask-api
+  name: microservice
 build:
   artifacts:
-  - image: py-api
+  - image: micro-interface
     context: .
     docker:
       dockerfile: Dockerfile
     sync:
       manual:
-        - dest: './api/*.py'
+        - dest: './*.py'
           src: '.'
   local:
     push: false
