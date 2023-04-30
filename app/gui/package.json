@@ -2,7 +2,7 @@
     "name": "my-react-app",
     "version": "0",
     "description": "My React App",
-    "main": "index.js",
+    "main": "app.js",
     "scripts": {
       "start": "serve -s build",
       "build": "react-scripts build"

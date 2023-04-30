@@ -6,8 +6,7 @@ WORKDIR /app
 
 # Install app dependencies
 COPY package*.json ./
-RUN npm install material-ui 
-
+RUN npm install
 # Copy app source code
 COPY . .
 

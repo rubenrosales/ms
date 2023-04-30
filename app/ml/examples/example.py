@@ -2,7 +2,7 @@
 import json
 from typing import Any, Dict, Optional
 from example import MicroService
-#Add class that creates http endpoint that listens for incoming events
+
 class ExampleMicroservice(MicroService):
     def handle_request(self, request_data: Dict[str, Any]) -> Dict[str, Any]:
         """

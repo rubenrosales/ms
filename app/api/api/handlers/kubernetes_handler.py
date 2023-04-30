@@ -24,7 +24,6 @@ class KubernetesBaseHandler:
 
 # kubernetes_handler.py
 from kubernetes import client
-from kubernetes_base_handler import KubernetesBaseHandler
 
 class KubernetesHandler(KubernetesBaseHandler):
     def __init__(self, namespace):
@@ -65,7 +64,6 @@ class KubernetesHandler(KubernetesBaseHandler):
 
 # kubernetes_job_handler.py
 from kubernetes import client
-from kubernetes_base_handler import KubernetesBaseHandler
 class KubernetesJobHandler(KubernetesBaseHandler):
     def __init__(self, namespace):
         super().__init__(namespace)
